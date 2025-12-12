@@ -1,0 +1,230 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design System - Gustavo Oliveira Cálculos Trabalhistas */
+:root {
+  /* Cores principais - Paleta jurídica profissional */
+  --primary: 210 100% 20%;        /* Azul-marinho profundo */
+  --primary-dark: 210 100% 15%;   /* Azul-marinho mais escuro */
+  --secondary: 0 0% 25%;          /* Chumbo escuro */
+  --accent: 0 0% 15%;             /* Preto suave */
+  --muted: 0 0% 96%;              /* Branco off */
+  --background: 0 0% 100%;        /* Branco puro */
+  --foreground: 0 0% 10%;         /* Texto principal */
+  --muted-foreground: 0 0% 45%;   /* Texto secundário */
+  --border: 0 0% 90%;             /* Bordas sutis */
+  --card: 0 0% 100%;              /* Fundo dos cards */
+  --card-foreground: 0 0% 10%;    /* Texto dos cards */
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 10%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 210 100% 20%;
+  --radius: 0.5rem;
+
+  /* Gradientes profissionais */
+  --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-dark)));
+  --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
+  --gradient-overlay: linear-gradient(135deg, hsl(var(--primary) / 0.95), hsl(var(--accent) / 0.95));
+
+  /* Sombras elegantes */
+  --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.2);
+  --shadow-card: 0 4px 20px -4px hsl(var(--primary) / 0.1);
+  --shadow-glow: 0 0 40px hsl(var(--primary) / 0.15);
+
+  /* Transições suaves */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.2s ease-out;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+
+  h1 {
+    @apply text-4xl lg:text-5xl;
+  }
+
+  h2 {
+    @apply text-3xl lg:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl lg:text-3xl;
+  }
+
+  h4 {
+    @apply text-xl lg:text-2xl;
+  }
+}
+
+@layer components {
+  /* Componentes personalizados para o portfólio jurídico */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 lg:py-24;
+  }
+
+  .card-professional {
+    @apply bg-card border border-border rounded-lg p-6 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elegant)] transition-[var(--transition-smooth)];
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-dark))] text-white px-6 py-3 rounded-lg font-medium hover:shadow-[var(--shadow-glow)] transition-[var(--transition-smooth)];
+  }
+
+  .btn-secondary {
+    @apply bg-transparent border-2 border-[hsl(var(--primary))] text-[hsl(var(--primary))] px-6 py-3 rounded-lg font-medium hover:bg-[hsl(var(--primary))] hover:text-white transition-[var(--transition-smooth)];
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-dark))] bg-clip-text text-transparent;
+  }
+
+  .hero-section {
+    @apply relative bg-gradient-to-br from-[hsl(var(--primary))] via-[hsl(var(--primary-dark))] to-[hsl(var(--accent))] text-white overflow-hidden;
+  }
+
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+    opacity: 0.3;
+  }
+
+  .methodology-step {
+    @apply relative pl-8 pb-8 border-l-2 border-[hsl(var(--primary))] last:border-l-0 last:pb-0;
+  }
+
+  .methodology-step::before {
+    content: '';
+    @apply absolute -left-2 top-0 w-4 h-4 bg-[hsl(var(--primary))] rounded-full;
+  }
+
+  .service-card {
+    @apply relative bg-card border border-border rounded-lg p-6 hover:border-[hsl(var(--primary))] hover:shadow-[var(--shadow-elegant)] transition-[var(--transition-smooth)] cursor-pointer;
+  }
+
+  .service-card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--primary-dark))] opacity-0 rounded-lg transition-[var(--transition-smooth)];
+  }
+
+  .service-card:hover::before {
+    opacity: 0.05;
+  }
+
+  .testimonial-card {
+    @apply bg-gradient-to-br from-[hsl(var(--muted))] to-white border border-border rounded-lg p-8 relative overflow-hidden;
+  }
+
+  .testimonial-card::before {
+    content: '"';
+    @apply absolute -top-4 -left-2 text-8xl text-[hsl(var(--primary))] opacity-20 font-serif;
+  }
+
+  .contact-form {
+    @apply bg-gradient-to-br from-white to-[hsl(var(--muted))] border border-border rounded-lg p-8 shadow-[var(--shadow-card)];
+  }
+
+  .laudo-preview {
+    @apply bg-white border-2 border-[hsl(var(--primary))] rounded-lg p-6 shadow-[var(--shadow-elegant)] font-mono text-sm;
+  }
+
+  .stats-number {
+    @apply text-4xl lg:text-5xl font-bold text-gradient;
+  }
+
+  .icon-professional {
+    @apply w-12 h-12 text-[hsl(var(--primary))] mb-4;
+  }
+}
+
+/* Animações personalizadas */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(var(--primary) / 0.5);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s ease-out;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Responsividade aprimorada */
+@media (max-width: 768px) {
+  .section-padding {
+    @apply py-12;
+  }
+  
+  .hero-section {
+    @apply text-center;
+  }
+  
+  .methodology-step {
+    @apply pl-6;
+  }
+}
+
+/* Impressão - Otimizado para laudos */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .laudo-preview {
+    @apply shadow-none border border-gray-300;
+  }
+  
+  body {
+    @apply text-black bg-white;
+  }
+}
